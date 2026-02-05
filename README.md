@@ -1,4 +1,4 @@
-# Nerfies
+# VLA-Reasoner 
 
 This is the repository that contains source code for the [VLA-Reasoner](https://vla-reasoner.github.io).
 
