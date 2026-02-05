@@ -144,44 +144,10 @@ Reasoning via Online Monte Carlo Tree Search</title>
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./multimedia/figures/teaser.pdf" alt="VLA-Reasoner Teaser" style="width: 100%;">
+      <img src="./multimedia/figures/teaser_01.png" alt="VLA-Reasoner Teaser" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">VLA-Reasoner</span> empowers vision-language-action models with reasoning capabilities through online Monte Carlo Tree Search.
       </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-pick-grape">
-          <video poster="" id="pick-grape" autoplay controls muted loop playsinline height="100%">
-            <source src="./multimedia/videos/pick_grape_reasoner.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-stack-2cups">
-          <video poster="" id="stack-2cups" autoplay controls muted loop playsinline height="100%">
-            <source src="./multimedia/videos/stack_2cups_reasoner.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-stack-cube">
-          <video poster="" id="stack-cube" autoplay controls muted loop playsinline height="100%">
-            <source src="./multimedia/videos/stack_cube_reasoner.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-pifast-fail">
-          <video poster="" id="pifast-fail" autoplay controls muted loop playsinline height="100%">
-            <source src="./multimedia/videos/stack_cube_pifast_fail.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -213,7 +179,7 @@ Reasoning via Online Monte Carlo Tree Search</title>
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method Overview</h2>
         <div class="content">
-          <img src="./multimedia/figures/pipeline.pdf" alt="VLA-Reasoner Pipeline" style="width: 100%;">
+          <img src="./multimedia/figures/pipeline_01.png" alt="VLA-Reasoner Pipeline" style="width: 100%;">
           <p class="has-text-justified">
             The overall pipeline of VLA-Reasoner. At test time, a lightweight and modified MCTS searches for the optimal action conditioned on the VLA prediction. The search is steered by expert-like sampling and dense reward shaping, which guide expansion and backup throughout the tree. The method is plug-and-play, and it can be attached to any VLA-based manipulation policy and consistently improves performance across tasks, environments, and robot embodiments.
           </p>
@@ -221,37 +187,117 @@ Reasoning via Online Monte Carlo Tree Search</title>
       </div>
     </div>
     <!--/ Method Overview -->
-  </div>
-</section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-
-
-
-
-
-    <!-- Related Work. -->
-    <div class="columns is-centered">
+    <!-- Experimental Results -->
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Related Work</h2>
+        <h2 class="title is-3">Experimental Results</h2>
+        
+        <!-- Simulation Results -->
+        <div class="content" style="margin-bottom: 3rem;">
+          <h3 class="title is-4">Results in Simulations</h3>
+          <img src="./multimedia/figures/quanlitative_results.png" alt="Simulation Results" style="width: 100%;">
+          <p class="has-text-justified" style="margin-top: 1rem;">
+            Average success rates across 500 episodes for LIBERO and 100 episodes for SimplerEnv. Our method outperforms OpenVLA-SFT on all 4 direction tasks and Octo-Small/SpatialVLA on 4 tasks. Bold entries mark the highest success rates, underlined for second-best. Asterisked results are chosen baselines and locally evaluated for fairness.
+          </p>
+        </div>
 
-        <div class="content has-text-justified">
-          <p>
-            Our work builds upon recent advances in Vision-Language-Action models and combines them with tree-based planning methods.
-          </p>
-          <p>
-            Related VLA models include <a href="https://robotics-transformer-x.github.io/">RT-X</a>, <a href="https://octo-models.github.io/">Octo</a>, and <a href="https://openvla.github.io/">OpenVLA</a>.
-          </p>
-          <p>
-            For tree-based planning in robotics, see works like <a href="https://arxiv.org/abs/2310.08582">AlphaGarden</a> and other MCTS-based approaches.
+        <!-- Real World Results -->
+        <div class="content">
+          <h3 class="title is-4">Results in Real World</h3>
+          <img src="./multimedia/figures/realworld_results.png" alt="Real World Results" style="width: 100%;">
+          <p class="has-text-justified" style="margin-top: 1rem;">
+            Average success rates of 5 tasks in different scenarios. Each task is evaluated 20 times. Our method apparently improves OpenVLA and π0-FAST in all tasks.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Related Work. -->
+    <!--/ Experimental Results -->
+  </div>
+</section>
+
+
+<!-- Video Demonstrations -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Performance Comparison -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Performance Visualization</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison between VLA-Reasoner and baseline methods on stack cube task. Our method demonstrates more robust and successful manipulation.
+          </p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <h3 class="title is-5">VLA-Reasoner (Ours)</h3>
+              <video id="stack-cube-reasoner" autoplay controls muted loop playsinline width="100%">
+                <source src="./multimedia/videos/stack_cube_reasoner.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content">
+              <h3 class="title is-5">π0-FAST (Baseline)</h3>
+              <video id="stack-cube-pifast" autoplay controls muted loop playsinline width="100%">
+                <source src="./multimedia/videos/stack_cube_pifast_fail.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Performance Comparison -->
+
+    <hr style="margin: 3rem 0;">
+
+    <!-- Long Horizon Manipulation -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Long Horizon Manipulation</h2>
+        <div class="content has-text-justified">
+          <p>
+            VLA-Reasoner successfully handles complex multi-step manipulation tasks that require careful planning and sequential reasoning.
+          </p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-three-fifths">
+            <video id="stack-2cups" autoplay controls muted loop playsinline width="100%">
+              <source src="./multimedia/videos/stack_2cups_reasoner.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Long Horizon Manipulation -->
+
+    <hr style="margin: 3rem 0;">
+
+    <!-- Spatial Generalization -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Spatial Generalization</h2>
+        <div class="content has-text-justified">
+          <p>
+            VLA-Reasoner demonstrates strong spatial generalization capabilities, adapting to varied object positions and orientations.
+          </p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-three-fifths">
+            <video id="pick-grape" autoplay controls muted loop playsinline width="100%">
+              <source src="./multimedia/videos/pick_grape_reasoner.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Spatial Generalization -->
 
   </div>
 </section>
